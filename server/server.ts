@@ -2,6 +2,8 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import OpenAI from 'openai';
+import fs from 'fs';
+import https from 'https';
 
 // 환경 변수 로드
 dotenv.config();
@@ -10,7 +12,9 @@ const app = express();
 const PORT = 5000;
 
 // 미들웨어 설정
-app.use(cors());
+app.use(cors({
+  origin: '*'
+}));
 app.use(express.json());
 
 // OpenAI 설정
@@ -35,7 +39,19 @@ app.post('/api/generate', async (req: Request, res: Response) => {
   }
 });
 
-// 서버 실행
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+// SSL 옵션 설정
+const httpsOptions = {
+  key: fs.readFileSync('./cert/server.key'),
+  cert: fs.readFileSync('./cert/server.crt'),
+  rejectUnauthorized: false, // SSL 검증 비활성화 (테스트용)
+};
+
+// HTTPS 서버 실행
+https.createServer(httpsOptions, app).listen(5000, () => {
+  console.log('HTTPS 서버가 https://172.20.10.2:5000 에서 실행 중');
 });
+
+// // 서버 실행
+// app.listen(PORT, () => {
+//   console.log(`Server running`);
+// });

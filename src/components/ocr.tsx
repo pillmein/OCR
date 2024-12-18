@@ -34,7 +34,7 @@ const CameraComponent: React.FC = () => {
 
                 // Step 2: Open API와 매칭
                 const matchedProduct = await fetchMatchedSupplementData(ocrText);
-
+                
                 // Step 2-1: 제품 이름 추출 및 저장
                 if (matchedProduct?.PRDLST_NM) {
                     setProductName(matchedProduct.PRDLST_NM);
