@@ -1,0 +1,80 @@
+// {
+//   "compilerOptions": {
+//     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+//     "target": "ES2022",
+//     "lib": ["ES2023"],
+//     "module": "ESNext",
+//     "skipLibCheck": true,
+
+//     /* Node.js 환경용 */
+//     "moduleResolution": "Node",
+//     "isolatedModules": true,
+//     "noEmit": true,
+
+//     /* Linting */
+//     "strict": true,
+//     "noUnusedLocals": true,
+//     "noUnusedParameters": true,
+//     "noFallthroughCasesInSwitch": true,
+//     "noUncheckedSideEffectImports": true
+//   },
+//   "include": ["vite.config.ts","server/**/*.ts"],
+//   "exclude": ["node_modules"]
+// }
+
+
+// {
+//   "compilerOptions": {
+//     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+//     "target": "ES2022", // 최신 JavaScript 기능을 사용
+//     "lib": ["ES2023"], // ES2023 라이브러리 사용
+//     "module": "CommonJS", // Node.js 호환 모듈 시스템
+//     "skipLibCheck": true,
+
+//     /* Node.js 환경 설정 */
+//     "moduleResolution": "Node", // Node.js 모듈 해석 방식
+//     "isolatedModules": true,
+//     "noEmit": true,
+
+//     /* Linting 옵션 */
+//     "strict": true,
+//     "noUnusedLocals": true,
+//     "noUnusedParameters": true,
+//     "noFallthroughCasesInSwitch": true,
+//     "noUncheckedSideEffectImports": true
+//   },
+//   "include": ["vite.config.ts", "server/**/*.ts"], // 기존 설정 유지 및 서버 코드 경로 추가
+//   "exclude": ["node_modules"] // node_modules 폴더 제외
+// }
+
+
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "target": "ES2022",
+    "lib": ["ES2023"],
+    "preserveValueImports": false,
+    //"module": "CommonJS",
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    //"moduleResolution": "Bundler",
+    "moduleResolution": "node",
+    "esModuleInterop": true, // CommonJS 모듈과 호환성을 유지하기 위해 추가합니다.
+    "allowSyntheticDefaultImports": true,
+
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  },
+  "include": ["vite.config.ts", "server/**/*.ts"]
+}
